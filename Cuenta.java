@@ -43,6 +43,12 @@ public class Cuenta {
         this.titular = titular;
     }
 
+
+    @Override
+    public String toString() {
+        return "Cuenta [numeroCuenta=" + numeroCuenta + ", saldo=" + saldo + ", titular=" + titular + "]";
+    }
+
     
 
 

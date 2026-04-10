@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 
-
 public class Cliente {
 
     private String dni;
@@ -8,14 +7,16 @@ public class Cliente {
     private String apellidos;
     private String direccion;
     private String localidad;
-    private localDate fechaNacimiento;
+    private LocalDate fechaNacimiento;
 
-     public Cliente(String dni) {
+    // Constructor mínimo
+    public Cliente(String dni) {
         this.dni = dni;
     }
 
-   public Cliente(String dni, String nombre, String apellidos, String direccion, String localidad,
-            localDate fechaNacimiento) {
+    // Constructor completo
+    public Cliente(String dni, String nombre, String apellidos, String direccion, String localidad,
+            LocalDate fechaNacimiento) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -24,16 +25,24 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-
-    public String nombreCompleto(){
-        return nombre + " " + apellidos;
-
+    // Métodos de conveniencia (Mejorados para evitar imprimir "null")
+    public String nombreCompleto() {
+        String n = (nombre != null) ? nombre : "";
+        String a = (apellidos != null) ? apellidos : "";
+        return (n + " " + a).trim();
     }
 
-    public String direccionCompleta(){
-        return direccion + " " + localidad;
+    public String direccionCompleta() {
+        String d = (direccion != null) ? direccion : "";
+        String l = (localidad != null) ? localidad : "";
+        
+        if (d.isEmpty() && l.isEmpty()) return "";
+        if (d.isEmpty()) return l;
+        if (l.isEmpty()) return d;
+        return d + ", " + l;
     }
 
+    // Getters y Setters
     public String getDni() {
         return dni;
     }
@@ -74,13 +83,21 @@ public class Cliente {
         this.localidad = localidad;
     }
 
-    public localDate getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(localDate fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-   
+    // Método toString para imprimir el objeto fácilmente
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "dni='" + dni + '\'' +
+                ", nombreCompleto='" + nombreCompleto() + '\'' +
+                ", localidad='" + localidad + '\'' +
+                '}';
+    }
 }
