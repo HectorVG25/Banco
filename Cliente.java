@@ -27,9 +27,7 @@ public class Cliente {
 
     // Métodos de conveniencia (Mejorados para evitar imprimir "null")
     public String nombreCompleto() {
-        String n = (nombre != null) ? nombre : "";
-        String a = (apellidos != null) ? apellidos : "";
-        return (n + " " + a).trim();
+        return nombre + " " +apellidos;
     }
 
     public String direccionCompleta() {

@@ -11,9 +11,10 @@ public class AppBanco {
             "Madrid", 
             LocalDate.of(1992, 3, 12)
         );
-
+        c1.nombreCompleto();
         Cuenta cuenta1 = new Cuenta(1, 243, c1);
         System.out.println(c1);
         System.out.println(cuenta1);
+
     }
 }
