@@ -31,13 +31,7 @@ public class Cliente {
     }
 
     public String direccionCompleta() {
-        String d = (direccion != null) ? direccion : "";
-        String l = (localidad != null) ? localidad : "";
-        
-        if (d.isEmpty() && l.isEmpty()) return "";
-        if (d.isEmpty()) return l;
-        if (l.isEmpty()) return d;
-        return d + ", " + l;
+        return direccion + " " +localidad;
     }
 
     // Getters y Setters
@@ -89,13 +83,12 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    // Método toString para imprimir el objeto fácilmente
     @Override
     public String toString() {
-        return "Cliente{" +
-                "dni='" + dni + '\'' +
-                ", nombreCompleto='" + nombreCompleto() + '\'' +
-                ", localidad='" + localidad + '\'' +
-                '}';
+        return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion
+                + ", localidad=" + localidad + ", fechaNacimiento=" + fechaNacimiento + "]";
     }
+
+    // Método toString
+    
 }
